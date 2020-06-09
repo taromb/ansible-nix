@@ -29,10 +29,10 @@
     - name: Create CG Snapshot
       na_ontap_cg_snapshot:
         state: present
-        vserver: "{{ ontap_vserver }}"
-        snapshot: "{{ ontap_snapshot }}"
-        volumes: "{{ ontap_volumes }}"
-        snapmirror_label: "{{ ontap_snapshot }}"
+        vserver: svm1
+        snapshot: cg-snapshot
+        volumes: lun1_vol
+        snapmirror_label: cg-snapshot
         <<: *login
       register: result
       retries: 1
