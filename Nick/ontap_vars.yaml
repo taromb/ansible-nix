@@ -1,8 +1,8 @@
 ## ansible 2.9
 ## ansible-galaxy collection install netapp.ontap
 ## https://galaxy.ansible.com/netapp/ontap
-ontap_hostname: 192.168.0.151
-ontap_username: vsadmin
+ontap_hostname: 192.168.0.110
+ontap_username: admin
 ontap_password: Netapp1!
 ontap_snapshot: cg-snapshot
 ontap_vserver: svm1

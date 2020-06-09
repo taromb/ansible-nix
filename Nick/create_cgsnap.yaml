@@ -39,36 +39,36 @@
       delay: 11
       until: result is changed
 
-    - name: Perform snapmirror update
-      shell: /netapp/snapmirrorupdate.sh >> /netapp/log/snapmirrorupdate.log
+#    - name: Perform snapmirror update
+#      shell: /netapp/snapmirrorupdate.sh >> /netapp/log/snapmirrorupdate.log
 
-    - name: Perform snapmirror update
-      shell: /netapp/snapmirrorupdate.sh >> /netapp/log/snapmirrorupdate.log
+#    - name: Perform snapmirror update
+#      shell: /netapp/snapmirrorupdate.sh >> /netapp/log/snapmirrorupdate.log
       
-    - name: Set ClonePrefix Clone 1
-      set_fact: ontap_cloneprefix={{ ontap_cloneprefix1 }}
+#    - name: Set ClonePrefix Clone 1
+#      set_fact: ontap_cloneprefix={{ ontap_cloneprefix1 }}
 
-    - include_tasks: createflexclone.yaml
+#    - include_tasks: createflexclone.yaml
 
-    - name: Set ClonePrefix Clone 2
-      set_fact: ontap_cloneprefix={{ ontap_cloneprefix2 }}
+#    - name: Set ClonePrefix Clone 2
+#      set_fact: ontap_cloneprefix={{ ontap_cloneprefix2 }}
 
-    - include_tasks: createflexclone.yaml
+#    - include_tasks: createflexclone.yaml
 
-    - name: Set ClonePrefix Clone 3
-      set_fact: ontap_cloneprefix={{ ontap_cloneprefix3 }}
+#    - name: Set ClonePrefix Clone 3
+#      set_fact: ontap_cloneprefix={{ ontap_cloneprefix3 }}
 
-    - include_tasks: createflexclone.yaml
+#    - include_tasks: createflexclone.yaml
 
-    - name: Set ClonePrefix Clone 4
-      set_fact: ontap_cloneprefix={{ ontap_cloneprefix4 }}
+#    - name: Set ClonePrefix Clone 4
+#      set_fact: ontap_cloneprefix={{ ontap_cloneprefix4 }}
 
-    - include_tasks: createflexclone.yaml
+#    - include_tasks: createflexclone.yaml
 
-    - name: Set ClonePrefix Clone 5
-      set_fact: ontap_cloneprefix={{ ontap_cloneprefix5 }}
+#    - name: Set ClonePrefix Clone 5
+#      set_fact: ontap_cloneprefix={{ ontap_cloneprefix5 }}
 
-    - include_tasks: createflexclone.yaml
+#    - include_tasks: createflexclone.yaml
 
    # - name: Change Serial CL 1 Execute the command in remote shell; stdout goes to the specified file on the remote.
    #   shell: /netapp/changeserial-cl1.sh >> /netapp/log/changeserial.log
