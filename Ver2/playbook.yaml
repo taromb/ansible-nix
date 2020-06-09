@@ -15,7 +15,7 @@
     na_ontap_cg_snapshot:
       state: present
       vserver: svm1
-      snapshot: snap
+      snapshot: snap1
       volumes: lun1_vol
       username: admin
       password: Netapp1!
@@ -25,7 +25,6 @@
 
   - name: Perform snapmirror update
     shell: /root/Ansible/Ver2/snapmirrorupdate.sh >> /tmp/snapmirrorupdate.log
-
 
   - name: Set ClonePrefix Clone 1
     set_fact: ontap_cloneprefix=clone_

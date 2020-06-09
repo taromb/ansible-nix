@@ -11,7 +11,7 @@
     parent_volume: lun1_vol_dest
     name: lun1_vol_dest_clone
     space_reserve: none
-    parent_snapshot: snap
+    parent_snapshot: snap1
 #  async: 300
 #  poll: 0
 #  register: _create_instances
