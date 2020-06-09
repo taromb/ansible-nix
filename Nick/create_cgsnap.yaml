@@ -20,7 +20,7 @@
       
 #    drlogin: &drlogin
 #      hostname: "{{ ontap_drhostname }}"
-#      username: "{{ ontap_drusername}}"
+#      username: "{{ ontap_drusername }}"
 #      password: "{{ ontap_drpassword }}"
 #      https: true
 #      validate_certs: false
