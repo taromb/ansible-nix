@@ -24,20 +24,20 @@ ontap_initiators5: clmandiri3
 ontap_cloneprefix5: cl5cg_
 ontap_lunid: 0
 ontap_volumes:
- - lun1_vol_dest
- - lun2_vol_dest
+ - lun1_vol
+ - lun2_vol
 ontap_cloneluns1:
- - /vol/lun1_vol_dest
- - /vol/lun2_vol_dest
+ - /vol/cl1cg_lun1_vol_dest/lun1
+ - /vol/cl1cg_lun2_vol_dest/lun2
 ontap_cloneluns2:
- - /vol/lun1_vol_dest
- - /vol/lun2_vol_dest
+ - /vol/cl2cg_lun1_vol_dest/lun1
+ - /vol/cl2cg_lun2_vol_dest/lun2
 ontap_cloneluns3:
- - /vol/lun1_vol_dest
- - /vol/lun2_vol_dest
+ - /vol/cl3cg_lun1_vol_dest/lun1
+ - /vol/cl3cg_lun2_vol_dest/lun2
 ontap_cloneluns4:
- - /vol/lun1_vol_dest
- - /vol/lun2_vol_dest
+ - /vol/cl4cg_lun1_vol_dest/lun1
+ - /vol/cl4cg_lun2_vol_dest/lun2
 ontap_cloneluns5:
- - /vol/lun1_vol_dest
- - /vol/lun2_vol_dest
+ - /vol/cl5cg_lun1_vol_dest/lun1
+ - /vol/cl5cg_lun2_vol_dest/lun2
