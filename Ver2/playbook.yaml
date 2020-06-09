@@ -24,7 +24,7 @@
       validate_certs: false
 
   - name: Perform snapmirror update
-    shell: /root/Ansible/Ver2/snapmirrorupdate.sh >> /netapp/log/snapmirrorupdate.log
+    shell: /root/Ansible/Ver2/snapmirrorupdate.sh >> /root/Ansible/Ver2/snapmirrorupdate.log
  # - name: Make FlexVol offline
  #   na_ontap_volume:
  #     state: present
