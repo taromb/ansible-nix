@@ -25,6 +25,13 @@
 
   - name: Perform snapmirror update
     shell: /root/Ansible/Ver2/snapmirrorupdate.sh >> /tmp/snapmirrorupdate.log
+
+
+  - name: Set ClonePrefix Clone 1
+    set_fact: ontap_cloneprefix=clone_
+
+  - include_tasks: createflexclone.yaml
+  
  # - name: Make FlexVol offline
  #   na_ontap_volume:
  #     state: present
