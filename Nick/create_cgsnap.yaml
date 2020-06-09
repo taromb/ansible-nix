@@ -12,9 +12,9 @@
 
   vars:
     login: &login
-      hostname: "{{ ontap_hostname }}"
-      username: "{{ ontap_username}}"
-      password: "{{ ontap_password }}"
+      hostname: 192.168.0.110
+      username: admin
+      password: Netapp1!
       https: true
       validate_certs: false
       
