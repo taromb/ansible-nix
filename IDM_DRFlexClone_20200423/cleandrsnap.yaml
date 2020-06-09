@@ -1,0 +1,37 @@
+---
+- name: Delete DR CG Snapshot
+  hosts: localhost
+  gather_facts: no
+  connection: local
+
+  collections:
+    - netapp.ontap
+  
+  vars_files:
+    - ontap_vars.yaml
+
+  vars:
+    login: &login
+      hostname: "{{ ontap_hostname }}"
+      username: "{{ ontap_username}}"
+      password: "{{ ontap_password }}"
+      https: true
+      validate_certs: false
+      
+    drlogin: &drlogin
+      hostname: "{{ ontap_drhostname }}"
+      username: "{{ ontap_drusername}}"
+      password: "{{ ontap_drpassword }}"
+      https: true
+      validate_certs: false
+
+  tasks:
+    - name: delete DR CG SnapShot
+      na_ontap_snapshot:
+        state: absent
+        snapshot: "{{ ontap_snapshot }}"
+        volume: "{{ item}}"
+        vserver: "{{ ontap_drvserver }}"
+        <<: *drlogin
+      with_items: "{{ ontap_volumes }}"
+
