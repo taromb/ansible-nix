@@ -7,8 +7,8 @@
   collections:
     - netapp.ontap
 
-  vars_files:
-    - ontap_vars.yaml
+#  vars_files:
+#    - ontap_vars.yaml
 
   vars:
     login: &login
@@ -18,12 +18,12 @@
       https: true
       validate_certs: false
       
-    drlogin: &drlogin
-      hostname: "{{ ontap_drhostname }}"
-      username: "{{ ontap_drusername}}"
-      password: "{{ ontap_drpassword }}"
-      https: true
-      validate_certs: false
+#    drlogin: &drlogin
+#      hostname: "{{ ontap_drhostname }}"
+#      username: "{{ ontap_drusername}}"
+#      password: "{{ ontap_drpassword }}"
+#      https: true
+#      validate_certs: false
 
   tasks:
     - name: Create CG Snapshot
