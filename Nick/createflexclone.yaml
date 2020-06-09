@@ -23,5 +23,5 @@
   register: _jobs
   until: _jobs.finished
   delay: 5
-  retries: 10
+ # retries: 10
   with_items: "{{ _create_instances.results }}"

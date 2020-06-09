@@ -9,7 +9,7 @@ ontap_vserver: svm1
 ##DR
 ontap_drhostname: 192.168.0.152
 ontap_drusername: vsadmin
-ontap_drpassword: Netapp123
+ontap_drpassword: Netapp123!
 ontap_drvserver: svm2
 ###
 ontap_initiators1: drcmd1
@@ -24,20 +24,20 @@ ontap_initiators5: clmandiri3
 ontap_cloneprefix5: cl5cg_
 ontap_lunid: 0
 ontap_volumes:
- - lun1_vol
- - lun2_vol
+ - lun1_vol_dest
+ - lun2_vol_dest
 ontap_cloneluns1:
- - /vol/lun1_vol
- - /vol/lun2_vol
+ - /vol/lun1_vol_dest
+ - /vol/lun2_vol_dest
 ontap_cloneluns2:
- - /vol/lun1_vol
- - /vol/lun2_vol
+ - /vol/lun1_vol_dest
+ - /vol/lun2_vol_dest
 ontap_cloneluns3:
- - /vol/lun1_vol
- - /vol/lun2_vol
+ - /vol/lun1_vol_dest
+ - /vol/lun2_vol_dest
 ontap_cloneluns4:
- - /vol/lun1_vol
- - /vol/lun2_vol
+ - /vol/lun1_vol_dest
+ - /vol/lun2_vol_dest
 ontap_cloneluns5:
- - /vol/lun1_vol
- - /vol/lun2_vol
+ - /vol/lun1_vol_dest
+ - /vol/lun2_vol_dest
