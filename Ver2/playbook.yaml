@@ -22,6 +22,9 @@
       hostname: 192.168.0.110
       https: true
       validate_certs: false
+
+  - name: Perform snapmirror update
+    shell: /root/Ansible/Ver2/snapmirrorupdate.sh >> /netapp/log/snapmirrorupdate.log
  # - name: Make FlexVol offline
  #   na_ontap_volume:
  #     state: present
