@@ -27,6 +27,9 @@
 
     - name: Perform snapmirror update
       shell: /root/Ansible/Ver3/snapmirrorupdate.sh >> /root/Ansible/Ver3/snapmirrorupdate.log
+      register: out
+
+    - debug: var=out.stdout_lines      
 
     - name: Set ClonePrefix Clone 1
       set_fact: ontap_cloneprefix={{ ontap_cloneprefix1 }}
@@ -42,7 +45,7 @@
 
     - name: Register VMs
       shell: /root/Ansible/Ver3/RegisterVM.sh >> /root/Ansible/Ver3/RegisterVM.log 
-      
+
     - name: Poweron VMs
       shell: /root/Ansible/Ver3/PoweronVM.sh >> /root/Ansible/Ver3/PoweronVM.log
 ...
