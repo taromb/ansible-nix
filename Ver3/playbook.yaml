@@ -22,6 +22,7 @@
         vserver: "{{ ontap_dcvserver }}"
         snapshot: "{{ ontap_dcsnapshot }}"
         volumes: "{{ ontap_dcvolumes }}"
+        snapmirror_label: "{{ ontap_dcsnapshot }}"
         <<: *dclogin
 #        username: "{{ ontap_dcusername }}"
 #        password: "{{ ontap_dcpassword }}"

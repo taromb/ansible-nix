@@ -1,8 +1,0 @@
----
-- name: Wait for DB UP
-  async_status:
-    jid: "{{ dbtask.ansible_job_id }}"
-  register: dbcheck
-  until: dbcheck.finished
-  delay: 10
-  retries: 60
