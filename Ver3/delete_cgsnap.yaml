@@ -1,0 +1,106 @@
+---
+- name: Delete Clone LUNs
+  hosts: localhost
+  gather_facts: no
+  connection: local
+
+  collections:
+    - netapp.ontap
+  
+  vars_files:
+    - ontap_vars.yaml
+
+  vars:
+    login: &login
+      hostname: "{{ ontap_hostname }}"
+      username: "{{ ontap_username}}"
+      password: "{{ ontap_password }}"
+      https: true
+      validate_certs: false
+      
+    drlogin: &drlogin
+      hostname: "{{ ontap_drhostname }}"
+      username: "{{ ontap_drusername}}"
+      password: "{{ ontap_drpassword }}"
+      https: true
+      validate_certs: false
+
+  tasks:
+    - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
+      shell: /netapp/umountandstopdb-cl1.sh >> /netapp/log/umountandstopdb-cl1.log
+      ignore_errors: yes
+
+    - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
+      shell: /netapp/umountandstopdb-cl2.sh >> /netapp/log/umountandstopdb-cl2.log
+      ignore_errors: yes
+
+    - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
+      shell: /netapp/umountandstopdb-cl3.sh >> /netapp/log/umountandstopdb-cl3.log
+      ignore_errors: yes
+
+    - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
+      shell: /netapp/umountandstopdb-cl4.sh >> /netapp/log/umountandstopdb-cl4.log
+      ignore_errors: yes
+
+    - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
+      shell: /netapp/umountandstopdb-cl5.sh >> /netapp/log/umountandstopdb-cl5.log
+      ignore_errors: yes
+
+    - name: Clone Volume Delete Set 1
+      na_ontap_volume:
+        state: absent
+        name: "{{ ontap_cloneprefix1 + item }}"
+        vserver: "{{ ontap_drvserver }}"
+        <<: *drlogin
+      with_items: "{{ ontap_volumes }}"
+
+    - name: Clone Volume Delete Set 2
+      na_ontap_volume:
+        state: absent
+        name: "{{ ontap_cloneprefix2 + item }}"
+        vserver: "{{ ontap_drvserver }}"
+        <<: *drlogin
+      with_items: "{{ ontap_volumes }}"
+
+    - name: Clone Volume Delete Set 3
+      na_ontap_volume:
+        state: absent
+        name: "{{ ontap_cloneprefix3 + item }}"
+        vserver: "{{ ontap_drvserver }}"
+        <<: *drlogin
+      with_items: "{{ ontap_volumes }}"
+
+    - name: Clone Volume Delete Set 4
+      na_ontap_volume:
+        state: absent
+        name: "{{ ontap_cloneprefix4 + item }}"
+        vserver: "{{ ontap_drvserver }}"
+        <<: *drlogin
+      with_items: "{{ ontap_volumes }}"
+
+    - name: Clone Volume Delete Set 5
+      na_ontap_volume:
+        state: absent
+        name: "{{ ontap_cloneprefix5 + item }}"
+        vserver: "{{ ontap_drvserver }}"
+        <<: *drlogin
+      with_items: "{{ ontap_volumes }}"
+
+    - name: delete Prod CG SnapShot
+      na_ontap_snapshot:
+        state: absent
+        snapshot: "{{ ontap_snapshot }}"
+        volume: "{{ item}}"
+        vserver: "{{ ontap_vserver }}"
+        <<: *login
+      with_items: "{{ ontap_volumes }}"
+
+    - name: delete DR CG SnapShot
+      na_ontap_snapshot:
+        state: absent
+        snapshot: "{{ ontap_snapshot }}"
+        volume: "{{ item}}"
+        vserver: "{{ ontap_drvserver }}"
+        <<: *drlogin
+      with_items: "{{ ontap_volumes }}"
+

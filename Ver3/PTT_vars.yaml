@@ -1,0 +1,12 @@
+##DC
+ontap_dchostname: 192.168.0.110
+ontap_dcusername: admin
+ontap_dcpassword: Netapp1!
+ontap_dcsnapshot: ansible_snapshot
+ontap_dcvserver: svm1
+##DR
+ontap_drhostname: 192.168.0.110
+ontap_drusername: admin
+ontap_drpassword: Netapp1!
+ontap_drvserver: svm2
+###

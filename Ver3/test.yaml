@@ -1,0 +1,87 @@
+---
+- name: Create Clone & Map the Clone LUN
+  hosts: localhost
+  gather_facts: no
+  connection: local
+
+  collections:
+    - netapp.ontap
+
+  vars_files:
+    - ontap_vars.yaml
+
+  vars:
+    login: &login
+      hostname: "{{ ontap_hostname }}"
+      username: "{{ ontap_username}}"
+      password: "{{ ontap_password }}"
+      https: true
+      validate_certs: false
+      
+    drlogin: &drlogin
+      hostname: "{{ ontap_drhostname }}"
+      username: "{{ ontap_drusername}}"
+      password: "{{ ontap_drpassword }}"
+      https: true
+      validate_certs: false
+
+  tasks:
+    - name: Create CG Snapshot
+      na_ontap_cg_snapshot:
+        state: present
+        vserver: "{{ ontap_vserver }}"
+        snapshot: "{{ ontap_snapshot }}"
+        volumes: "{{ ontap_volumes }}"
+        snapmirror_label: "{{ ontap_snapshot }}"
+        <<: *login
+      register: result
+      retries: 5
+      delay: 11
+      until: result is changed
+
+    - name: Perform snapmirror update
+      shell: /netapp/snapmirrorupdate.sh >> /netapp/snapmirrorupdate.log
+
+    - name: Perform snapmirror update
+      shell: /netapp/snapmirrorupdate.sh >> /netapp/snapmirrorupdate.log
+      
+    - name: Set ClonePrefix Clone 1
+      set_fact: ontap_cloneprefix={{ ontap_cloneprefix1 }}
+
+    - include_tasks: createflexclone.yaml
+
+    - name: Set ClonePrefix Clone 2
+      set_fact: ontap_cloneprefix={{ ontap_cloneprefix2 }}
+
+    - include_tasks: createflexclone.yaml
+
+    - name: Set ClonePrefix Clone 3
+      set_fact: ontap_cloneprefix={{ ontap_cloneprefix3 }}
+
+    - include_tasks: createflexclone.yaml
+
+    - name: Set ClonePrefix Clone 4
+      set_fact: ontap_cloneprefix={{ ontap_cloneprefix4 }}
+
+    - include_tasks: createflexclone.yaml
+
+    - name: Set ClonePrefix Clone 5
+      set_fact: ontap_cloneprefix={{ ontap_cloneprefix5 }}
+
+    - include_tasks: createflexclone.yaml
+
+    - name: Change Serial CL 1 Execute the command in remote shell; stdout goes to the specified file on the remote.
+      shell: /netapp/changeserial-cl1.sh >> /netapp/changeserial.log
+
+    - name: Change Serial CL 2 Execute the command in remote shell; stdout goes to the specified file on the remote.
+      shell: /netapp/changeserial-cl2.sh >> /netapp/changeserial.log
+
+    - name: Change Serial CL 3 Execute the command in remote shell; stdout goes to the specified file on the remote.
+      shell: /netapp/changeserial-cl3.sh >> /netapp/changeserial.log
+
+    - name: Change Serial CL 4 Execute the command in remote shell; stdout goes to the specified file on the remote.
+      shell: /netapp/changeserial-cl4.sh >> /netapp/changeserial.log
+
+    - name: Change Serial CL 5 Execute the command in remote shell; stdout goes to the specified file on the remote.
+      shell: /netapp/changeserial-cl5.sh >> /netapp/changeserial.log
+
