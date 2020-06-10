@@ -1,3 +1,4 @@
+---
 - hosts: all
   tasks:
     - name: Run shellscript show output
@@ -5,3 +6,4 @@
       register: out
 
     - debug: var=out.stdout_lines
+...
