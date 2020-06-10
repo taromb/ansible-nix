@@ -1,9 +1,10 @@
+#!/bin/bash
+
 ## DETECTING VMX FILE ###
 cat vars.yaml | shyaml get-value ontap_drvolumes| awk '{print $2}' > vol_dest.list
 ontap_drhostname=`cat vars.yaml | shyaml get-value ontap_drhostname`
 ontap_drusername=`cat vars.yaml | shyaml get-value ontap_drusername`
 ontap_drvserver=`cat vars.yaml | shyaml get-value ontap_drvserver`
-
 
 FILEIN=vol_dest.list
 LOOPS=`wc -l $FILEIN |awk '{print $1}'`
