@@ -1,7 +1,10 @@
 #!/bin/bash
+## GET VAR FROM VARS FILE ###
+esx_drhostname=`cat vars.yaml | shyaml get-value esx_drhostname`
+esx_drusername=`cat vars.yaml | shyaml get-value esx_drusername`
 
 ## DETECTING VM ID ###
-ssh root@192.168.0.103 "vim-cmd vmsvc/getallvms | grep snap" > getallvms.list
+ssh $esx_drusername@$esx_drhostname "vim-cmd vmsvc/getallvms | grep snap" > getallvms.list
 FILEIN=getallvms.list
 LOOPS=`wc -l $FILEIN |awk '{print $1}'`
 echo $LOOPS
@@ -11,7 +14,7 @@ COUNT=1
 while [ $COUNT -le $LOOPS ]
 do
 VM_ID=`head -$COUNT $FILEIN |tail -1|awk '{print $1}'`
-ssh root@192.168.0.103 "vim-cmd vmsvc/power.on" $VM_ID
+ssh $esx_drusername@$esx_drhostname "vim-cmd vmsvc/power.on" $VM_ID
 (( COUNT++ ))
 done
 
