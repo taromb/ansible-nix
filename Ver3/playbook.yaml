@@ -5,7 +5,7 @@
     - netapp.ontap
 
   vars_files:
-    - PTT_vars.yaml
+    - vars.yaml
 
   vars:
     login: &dclogin
