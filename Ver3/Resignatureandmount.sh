@@ -16,9 +16,12 @@ COUNT=1
 while [ $COUNT -le $LOOPS ]
 do
 VMFS_UUID=`head -$COUNT $FILEIN |tail -1|awk '{print $3}'`
-echo "esxcli storage vmfs snapshot resignature -u" $VMFS_UUID
+ssh root@192.168.0.103 "esxcli storage vmfs snapshot resignature -u" $VMFS_UUID
 (( COUNT++ ))
 done
 
 # Cleanup File
 rm vmfsuuid.list
+
+## RESCAN DEVICE ##
+ssh root@192.168.0.103 "esxcfg-rescan vmhba65"

@@ -37,7 +37,7 @@
     - include_tasks: lunmap.yaml
       with_items: "{{ ontap_cloneluns1 }}"
 
-    - name: Resignature
-    - shell: /root/Ansible/Ver3/Resignature.sh >> /root/Ansible/Ver3/Resignature.log
+    - name: Resignature and mount datastores
+      shell: /root/Ansible/Ver3/Resignatureandmount.sh >> /root/Ansible/Ver3/Resignatureandmount.log
 
 ...
