@@ -1,10 +1,10 @@
 #!/bin/bash
 
 ## RESCAN DEVICE ##
-ssh root@esx1 "esxcfg-rescan vmhba65"
+ssh root@192.168.0.103 "esxcfg-rescan vmhba65"
 
 ## DETECTING VMFS UUID TO RESIGNATURE ###
-ssh root@esx1 "esxcli storage vmfs snapshot list | grep VMFS" | tail -n +3 > vmfsuuid.list
+ssh root@192.168.0.103 "esxcli storage vmfs snapshot list | grep VMFS" > vmfsuuid.list
 
 
 FILEIN=vmfsuuid.list
