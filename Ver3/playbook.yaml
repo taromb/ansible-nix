@@ -31,4 +31,9 @@
     - name: Set ClonePrefix Clone 1
       set_fact: ontap_cloneprefix={{ ontap_cloneprefix1 }}
     - include_tasks: createflexclone.yaml
+
+    - name: Set IGROUP 1
+      set_fact: ontap_initiators={{ ontap_initiators1 }}
+    - include_tasks: lunmap.yaml
+      with_items: "{{ ontap_cloneluns1 }}"
 ...

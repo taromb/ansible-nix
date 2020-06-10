@@ -15,6 +15,10 @@ ontap_drvserver: svm2
 ontap_drvolumes:
  - lun1_vol_dest
  - lun2_vol_dest
-###Clone Prefix
+ontap_initiators1: vmwaredr
+ontap_lunid: 10
+###Clone
 ontap_cloneprefix1: clone1_
-ontap_cloneprefix2: clone2_
+ontap_cloneluns1:
+ - /vol/clone1_lun1_vol_dest/lun1
+ - /vol/clone1_lun2_vol_dest/lun2
