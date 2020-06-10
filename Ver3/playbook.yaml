@@ -4,7 +4,7 @@
   collections:
     - netapp.ontap
 
-  var_files:
+  vars_files:
     - PTT_vars.yaml
 
   tasks:
