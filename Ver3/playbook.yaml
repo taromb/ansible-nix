@@ -24,7 +24,11 @@
         volumes: "{{ ontap_dcvolumes }}"
         snapmirror_label: "{{ ontap_dcsnapshot }}"
         <<: *dclogin
+
     - name: Perform snapmirror update
       shell: /root/Ansible/Ver3/snapmirrorupdate.sh >> /root/Ansible/Ver3/snapmirrorupdate.log
 
+    - name: Set ClonePrefix Clone 1
+      set_fact: ontap_cloneprefix={{ ontap_cloneprefix1 }}
+    - include_tasks: createflexclone.yaml
 ...
