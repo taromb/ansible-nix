@@ -1,8 +1,10 @@
 #!/bin/bash
+## GET VAR FROM VARS FILE ###
+esx_drhostname=`cat vars.yaml | shyaml get-value esx_drhostname`
+esx_drusername=`cat vars.yaml | shyaml get-value esx_drusername`
 
 ## DETECTING VMX FILE ###
-ssh root@192.168.0.103 "ls /vmfs/volumes/snap*/*/*.vmx" > vmxfile.list
-
+ssh $esx_drusername@$esx_drhostname "ls /vmfs/volumes/snap*/*/*.vmx" > vmxfile.list
 
 FILEIN=vmxfile.list
 LOOPS=`wc -l $FILEIN |awk '{print $1}'`
@@ -13,7 +15,7 @@ COUNT=1
 while [ $COUNT -le $LOOPS ]
 do
 VMX_FILE=`head -$COUNT $FILEIN |tail -1|awk '{print $1}'`
-ssh root@192.168.0.103 "vim-cmd solo/registervm " $VMX_FILE
+ssh $esx_drusername@$esx_drhostname "vim-cmd solo/registervm " $VMX_FILE
 (( COUNT++ ))
 done
 
