@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## DETECTING VMX FILE ###
-ssh root@esx1 "ls /vmfs/volumes/snap*/*/*.vmx" > vmxfile.list
+ssh root@192.168.0.103 "ls /vmfs/volumes/snap*/*/*.vmx" > vmxfile.list
 
 
 FILEIN=vmxfile.list
@@ -13,7 +13,7 @@ COUNT=1
 while [ $COUNT -le $LOOPS ]
 do
 VMX_FILE=`head -$COUNT $FILEIN |tail -1|awk '{print $1}'`
-ssh root@esx1 "vim-cmd solo/registervm " $VMX_FILE
+ssh root@192.168.0.103 "vim-cmd solo/registervm " $VMX_FILE
 (( COUNT++ ))
 done
 
