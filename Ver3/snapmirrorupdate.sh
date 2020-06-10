@@ -8,7 +8,7 @@ ontap_drvserver=`cat vars.yaml | shyaml get-value ontap_drvserver`
 
 FILEIN=vol_dest.list
 LOOPS=`wc -l $FILEIN |awk '{print $1}'`
-echo $LOOPS
+echo $LOOPS "RELATION TO EXECUTE"
 COUNT=1
 
 ## LOOP TO REGISTER VMX ON ALL DEVICE ###
