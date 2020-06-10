@@ -7,6 +7,14 @@
   vars_files:
     - PTT_vars.yaml
 
+  vars:
+    login: &dclogin
+      hostname: "{{ ontap_dchostname }}"
+      username: "{{ ontap_dcusername}}"
+      password: "{{ ontap_dcpassword }}"
+      https: true
+      validate_certs: false
+
   tasks:
     - name: Create Snapshot at DC
       na_ontap_cg_snapshot:
@@ -14,11 +22,12 @@
         vserver: "{{ ontap_dcvserver }}"
         snapshot: "{{ ontap_dcsnapshot }}"
         volumes: "{{ ontap_dcvolumes }}"
-        username: "{{ ontap_dcusername }}"
-        password: "{{ ontap_dcpassword }}"
-        hostname: "{{ ontap_dchostname }}"
-        https: true
-        validate_certs: false
+        <<: *dclogin
+#        username: "{{ ontap_dcusername }}"
+#        password: "{{ ontap_dcpassword }}"
+#        hostname: "{{ ontap_dchostname }}"
+#        https: true
+#        validate_certs: false
 
  #   - name: Perform snapmirror update
  #     shell: /root/Ansible/Ver2/snapmirrorupdate.sh >> /tmp/snapmirrorupdate.log
