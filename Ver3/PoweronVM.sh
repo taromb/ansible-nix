@@ -11,7 +11,7 @@ COUNT=1
 while [ $COUNT -le $LOOPS ]
 do
 VM_ID=`head -$COUNT $FILEIN |tail -1|awk '{print $1}'`
-ssh root@192.168.0.103 "vim-cmd vmsvc/power.onm " $VM_ID
+ssh root@192.168.0.103 "vim-cmd vmsvc/power.on" $VM_ID
 (( COUNT++ ))
 done
 
