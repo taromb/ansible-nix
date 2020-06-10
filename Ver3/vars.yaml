@@ -26,6 +26,6 @@ ontap_cloneluns1:
  - /vol/clone1_svm1_lun2_vol_dest/svm1_lun2
 
  ## ESX DR
- esx_drhostname: 192.168.0.103
- esx_drusername: root
- esx_iscsi_hba: vmhba65
+esx_drhostname: 192.168.0.103
+esx_drusername: root
+esx_iscsi_hba: vmhba65
