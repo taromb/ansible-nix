@@ -5,20 +5,20 @@ ontap_dcpassword: Netapp1!
 ontap_dcsnapshot: ansible_snapshot
 ontap_dcvserver: svm1
 ontap_dcvolumes:
- - lun1_vol
- - lun2_vol
+ - svm1_lun1_vol
+ - svm1_lun2_vol
 ##DR
 ontap_drhostname: 192.168.0.110
 ontap_drusername: admin
 ontap_drpassword: Netapp1!
 ontap_drvserver: svm2
 ontap_drvolumes:
- - lun1_vol_dest
- - lun2_vol_dest
+ - svm1_lun1_vol_dest
+ - svm1_lun2_vol_dest
 ontap_initiators1: vmwaredr
 ontap_lunid: 10
 ###Clone
 ontap_cloneprefix1: clone1_
 ontap_cloneluns1:
- - /vol/clone1_lun1_vol_dest/lun1
- - /vol/clone1_lun2_vol_dest/lun2
+ - /vol/clone1_svm1_lun1_vol_dest/svm1_lun1
+ - /vol/clone1_svm1_lun2_vol_dest/svm1_lun2
