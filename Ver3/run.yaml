@@ -2,7 +2,7 @@
 - hosts: localhost
   tasks:
     - name: Run shellscript show output
-      script: run.sh
+      script: cat logo
       register: out
 
     - debug: var=out.stdout_lines
