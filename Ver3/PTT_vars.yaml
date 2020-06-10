@@ -4,6 +4,9 @@ ontap_dcusername: admin
 ontap_dcpassword: Netapp1!
 ontap_dcsnapshot: ansible_snapshot
 ontap_dcvserver: svm1
+ontap_dcvolumes:
+ - lun1_vol
+ - lun2_vol
 ##DR
 ontap_drhostname: 192.168.0.110
 ontap_drusername: admin

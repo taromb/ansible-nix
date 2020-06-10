@@ -13,7 +13,7 @@
         state: present
         vserver: "{{ ontap_dcvserver }}"
         snapshot: "{{ ontap_dcsnapshot }}"
-        volumes: lun1_vol
+        volumes: "{{ ontap_dcvolumes }}"
         username: "{{ ontap_dcusername }}"
         password: "{{ ontap_dcpassword }}"
         hostname: "{{ ontap_dchostname }}"
