@@ -2,7 +2,7 @@
 - hosts: localhost
   tasks:
     - name: Run shellscript show output
-      script: snapmirrorupdate.sh
+      script: run.sh
       register: out
 
     - debug: var=out.stdout_lines
